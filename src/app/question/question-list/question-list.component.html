@@ -1,1 +1,2 @@
-<p>question-list works!</p>
+<h2>Question list</h2>
+<div *ngFor="let question of questions$ | async">{{ question.title }}</div>
