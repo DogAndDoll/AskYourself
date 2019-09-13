@@ -6,9 +6,10 @@ import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
-  declarations: [QuestionListComponent, QuestionComponent],
-  imports: [
-    CommonModule
-  ]
+    declarations: [QuestionListComponent, QuestionComponent],
+    exports: [QuestionListComponent],
+    imports: [
+        CommonModule
+    ]
 })
 export class QuestionModule { }

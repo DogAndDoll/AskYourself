@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { QuestionModule } from './question/question.module';
 
 @NgModule({
     declarations: [
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
     ],
     imports: [
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        QuestionModule
     ],
     providers: [],
     bootstrap: [AppComponent]
