@@ -9,6 +9,7 @@ import { NewQuestionDialogComponent } from './new-question-dialog/new-question-d
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule
+        FormsModule,
+        MatCardModule
     ],
     entryComponents: [
         NewQuestionDialogComponent

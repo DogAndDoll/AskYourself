@@ -1,15 +1,21 @@
 <h1 mat-dialog-title>Ask a question</h1>
-<div mat-dialog-content>
-    <p>Title</p>
-    <mat-form-field>
-        <input matInput [(ngModel)]="data.title">
+<div mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="data.title" cdkFocusInitial>
     </mat-form-field>
-    <p>Description</p>
-    <mat-form-field>
-        <input matInput [(ngModel)]="data.description">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="data.description" matTextareaAutosize matAutosizeMinRows=5></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Image URL</mat-label>
+        <input matInput [(ngModel)]="data.imageUrl">
     </mat-form-field>
 </div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+<div mat-dialog-actions class="justify-content-flex-end">
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data">Ok</button>
 </div>
