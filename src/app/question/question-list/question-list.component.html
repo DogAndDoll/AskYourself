@@ -1,7 +1,8 @@
-<h2>Questions</h2>
-<button mat-raised-button color="primary" (click)="addQuestion()">
+<button mat-raised-button color="accent" (click)="addQuestion()">
     <mat-icon aria-hidden="false">add</mat-icon>
     &nbsp;
     Ask a question
 </button>
-<div *ngFor="let question of questions$ | async">{{ question.title }}</div>
+<div class="questions pt-3">
+    <app-question *ngFor="let question of questions$ | async" [question]="question"></app-question>
+</div>

@@ -1,1 +1,18 @@
-<p>question works!</p>
+<mat-card class="mb-5">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon aria-hidden="false" class="header-icon" color="primary">question_answer</mat-icon>
+            <!-- <mat-icon question_answer></mat-icon> -->
+        </div>
+        <mat-card-title>
+            {{ question.title }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            Added: 11.09.2019
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content> {{ question.description }} </mat-card-content>
+    <!-- <mat-card-actions> Container for buttons at the bottom of the card </mat-card-actions> -->
+    <mat-card-footer> 2 answers </mat-card-footer>
+
+</mat-card>

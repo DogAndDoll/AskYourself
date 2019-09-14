@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Question } from './question';
 import { NgxIndexedDB } from 'ngx-indexed-db';
 import { Observable, from } from 'rxjs';
-import { concatMap, first } from 'rxjs/operators';
+import { concatMap, first, map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class QuestionService {
     public getQuestions(): Observable<Question[]> {
         return this.openDb().pipe(
             concatMap(() => from(this.db.getAll(this.questionStorage))),
-            first()
+            map((questions: Question[]) => questions.reverse())
         );
     }
 
