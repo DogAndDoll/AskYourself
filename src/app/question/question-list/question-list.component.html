@@ -1,2 +1,7 @@
-<h2>Question list</h2>
+<h2>Questions</h2>
+<button mat-raised-button color="primary" (click)="addQuestion()">
+    <mat-icon aria-hidden="false">add</mat-icon>
+    &nbsp;
+    Ask a question
+</button>
 <div *ngFor="let question of questions$ | async">{{ question.title }}</div>
