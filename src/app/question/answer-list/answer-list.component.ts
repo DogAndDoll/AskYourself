@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Answer } from '../answer';
 import { AnswerService } from '../answer.service';
 import { Question } from '../question';
@@ -17,7 +16,7 @@ export class AnswerListComponent implements OnInit {
     @Input()
     private question: Question;
 
-    public answers$: Observable<Answer[]>;
+    public answers: Answer[];
 
     constructor(
         private answerService: AnswerService,
@@ -26,7 +25,9 @@ export class AnswerListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.answers$ = this.answerService.index(this.question.id);
+        this.answerService.index(this.question.id).subscribe(
+            answers => this.answers = answers
+        );
     }
 
     public trackAnswer(index: number, answer: Answer): number {
@@ -46,8 +47,9 @@ export class AnswerListComponent implements OnInit {
                     answer.downVotes = 0;
                     answer.upVotes = 0;
                     answer.questionId = this.question.id;
-                    this.answerService.add(answer);
-                    this.answers$ = this.answerService.index(this.question.id);
+                    this.answerService.add(answer).subscribe(
+                        stored => this.answers.unshift(stored)
+                    );
                     this.question.answers++;
                     this.questionService.update(this.question);
                 }

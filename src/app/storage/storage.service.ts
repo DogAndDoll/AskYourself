@@ -19,16 +19,17 @@ export class StorageService {
     }
 
     public openDb(): Observable<NgxIndexedDB> {
-        return from(this.db.openDatabase(1, event => {
-            event.currentTarget.result.createObjectStore(StorageName.question, { keyPath: 'id', autoIncrement: true });
+        return from(
+            this.db.openDatabase(1, event => {
+                event.currentTarget.result.createObjectStore(StorageName.question, { keyPath: 'id', autoIncrement: true });
 
-            const objectStore = event.currentTarget.result
-                .createObjectStore(StorageName.answer, { keyPath: 'id', autoIncrement: true });
+                const objectStore =
+                    event.currentTarget.result.createObjectStore(StorageName.answer, { keyPath: 'id', autoIncrement: true });
 
-            objectStore.createIndex('questionId', 'questionId', { unique: false });
-        })).pipe(
+                objectStore.createIndex('questionId', 'questionId', { unique: false });
+            })
+        ).pipe(
             map(() => this.db)
         );
     }
-
 }

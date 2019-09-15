@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgxIndexedDB } from 'ngx-indexed-db';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Answer } from './answer';
-import { first, concatMap } from 'rxjs/operators';
+import { first, concatMap, map } from 'rxjs/operators';
 import { StorageService } from '../storage/storage.service';
 import { StorageName } from '../storage/storage-name.enum';
 
@@ -27,8 +27,13 @@ export class AnswerService {
         );
     }
 
-    public add(answer: Answer): void {
-        this.storage.getDB().add(StorageName.answer, answer);
+    public add(answer: Answer): Observable<Answer> {
+        return from(this.storage.getDB().add(StorageName.answer, answer)).pipe(
+            map(event => {
+                answer.id = event.target.result;
+                return answer;
+            })
+        );
     }
 
     public update(answer: Answer): void {

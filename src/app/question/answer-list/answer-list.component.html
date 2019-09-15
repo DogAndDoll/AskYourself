@@ -4,7 +4,7 @@
     Answer
 </button>
 <div class="answers pt-4">
-    <div *ngFor="let answer of answers$ | async; trackBy: trackAnswer" class="question-selector">
+    <div *ngFor="let answer of answers; trackBy: trackAnswer" class="question-selector">
         <app-answer [answer]="answer"></app-answer>
     </div>
 </div>

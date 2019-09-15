@@ -5,6 +5,7 @@ import { Observable, from, BehaviorSubject } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 import { StorageService } from '../storage/storage.service';
 import { StorageName } from '../storage/storage-name.enum';
+import { questionsSeed } from './seed';
 
 @Injectable({
     providedIn: 'root'
@@ -15,11 +16,11 @@ export class QuestionService {
 
     constructor(
         private storage: StorageService
-    ) {
-    }
+    ) { }
 
     public index(): BehaviorSubject<Question[]> {
         this.pushCurrentQuestions();
+
         return this.questionsSubject;
     }
 
@@ -42,10 +43,18 @@ export class QuestionService {
         this.storage.openDb().pipe(
             concatMap((db) => from(db.getAll(StorageName.question))),
             map(
-                (questions: Question[]) =>
-                    this.questionsSubject.next(questions.reverse())
+                (questions: Question[]) => {
+                    if (questions.length === 0) {
+                        this.seed();
+                    }
+                    this.questionsSubject.next(questions.reverse());
+                }
             ),
             first()
         ).subscribe();
+    }
+
+    private seed(): void {
+        questionsSeed.forEach(q => this.add(q));
     }
 }
