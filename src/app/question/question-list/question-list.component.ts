@@ -20,19 +20,21 @@ export class QuestionListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.questionService.getQuestions().subscribe(r => console.log(r))
         this.questions$ = this.questionService.getQuestions();
     }
 
     addQuestion(): void {
         const dialogRef = this.dialog.open(NewQuestionDialogComponent, {
             width: '550px',
-            data: { }
+            data: {}
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            this.questionService.addQuestion(result);
-        });
+        dialogRef.afterClosed().subscribe(
+            (question: Question) => {
+                question.date = new Date();
+                this.questionService.addQuestion(question);
+            }
+        );
     }
 
 }

@@ -10,6 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { MatCardModule } from '@angular/material/card';
         MatFormFieldModule,
         MatInputModule,
         FormsModule,
-        MatCardModule
+        MatCardModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatDividerModule
     ],
     entryComponents: [
         NewQuestionDialogComponent

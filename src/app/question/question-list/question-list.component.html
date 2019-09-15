@@ -1,8 +1,9 @@
-<button mat-raised-button color="accent" (click)="addQuestion()">
+<button mat-raised-button color="accent" (click)="addQuestion()" class="w-100">
     <mat-icon aria-hidden="false">add</mat-icon>
     &nbsp;
-    Ask a question
+    Ask Question
 </button>
-<div class="questions pt-3">
-    <app-question *ngFor="let question of questions$ | async" [question]="question"></app-question>
+<div class="questions pt-4">
+    <app-question *ngFor="let question of questions$ | async; trackBy: question?.id" [question]="question">
+    </app-question>
 </div>
