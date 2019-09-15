@@ -34,6 +34,10 @@ export class QuestionService {
         this.pushCurrentQuestions();
     }
 
+    public updateQuestion(question: Question): void {
+        this.db.update(this.questionStorage, question);
+    }
+
     private openDb(): Observable<any> {
         return from(this.db.openDatabase(1, event => {
             event.currentTarget.result.createObjectStore(this.questionStorage, { keyPath: 'id', autoIncrement: true });

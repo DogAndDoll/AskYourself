@@ -18,4 +18,8 @@ export class QuestionComponent implements OnInit {
     ngOnInit() {
     }
 
+    public getScore(): number {
+        return (this.question.upVotes || 0) - (this.question.downVotes || 0);
+    }
+
 }

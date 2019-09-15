@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'app-question-view',
@@ -11,7 +12,7 @@ import { QuestionService } from '../question.service';
 })
 export class QuestionViewComponent implements OnInit, OnDestroy {
 
-    public question$: Observable<Question>;
+    public question: Question;
     private questionId: number;
     private routeSubscription: Subscription;
 
@@ -23,12 +24,30 @@ export class QuestionViewComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSubscription = this.route.paramMap.subscribe(params => {
             this.questionId = parseInt(params.get('id'), 10);
-            this.question$ = this.questionService.getQuestion(this.questionId);
+            this.questionService.getQuestion(this.questionId).pipe(
+               first()
+            ).subscribe(
+               question => this.question = question
+           );
         });
     }
 
     ngOnDestroy(): void {
         this.routeSubscription.unsubscribe();
+    }
+
+    public getScore(): number {
+        return (this.question.upVotes || 0) - (this.question.downVotes || 0);
+    }
+
+    public upVote(): void {
+        this.question.upVotes++;
+        this.questionService.updateQuestion(this.question);
+    }
+
+    public downVote(): void {
+        this.question.downVotes++;
+        this.questionService.updateQuestion(this.question);
     }
 
 }

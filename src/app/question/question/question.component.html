@@ -14,10 +14,10 @@
     <mat-card-footer class="mt-2">
         <mat-grid-list cols="2" rowHeight="50px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-icon matBadge="15" matBadgeColor="accent" aria-hidden="false" color="">question_answer</mat-icon>
+                <mat-icon [matBadge]="getScore()" matBadgeColor="primary" aria-hidden="false" color="">thumbs_up_down</mat-icon>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-icon matBadge="15" matBadgeColor="accent" aria-hidden="false" color="">thumbs_up_down</mat-icon>
+                <mat-icon matBadge="15" matBadgeColor="primary" aria-hidden="false" color="">question_answer</mat-icon>
             </mat-grid-tile>
         </mat-grid-list>
     </mat-card-footer>

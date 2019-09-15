@@ -1,4 +1,4 @@
-<div *ngIf="question$ | async as question; else loading">
+<div *ngIf="question; else loading">
     <mat-card>
         <mat-card-header>
             <div mat-card-avatar>
@@ -22,7 +22,24 @@
             </p>
         </mat-card-content>
         <mat-divider></mat-divider>
-
+        <mat-card-footer class="mt-2">
+            <mat-grid-list cols="3" rowHeight="60px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-icon-button color="accent">
+                        <mat-icon aria-hidden="false" (click)="downVote()">thumb_down</mat-icon>
+                    </button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    Votes:&nbsp;<strong [class.text-success]="getScore()"
+                        [class.text-danger]="getScore() < 0">{{ getScore() }}</strong>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-icon-button color="accent" (click)="upVote()">
+                        <mat-icon aria-hidden="false">thumb_up </mat-icon>
+                    </button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-footer>
     </mat-card>
 </div>
 <ng-template #loading>

@@ -14,11 +14,12 @@ $padding: 24px;
 }
 
 .mat-card-footer {
+    font-size: 20px;
     margin: 0 -#{$padding} -#{$padding} -#{$padding};
 }
 
 .mat-card-content {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .mat-card-image {
