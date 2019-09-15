@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
-    <span>AskYourself</span>
+    <span [routerLink]="'/'" class="cursor-pointer">
+        AskYourself
+    </span>
 </mat-toolbar>
 <main class="container my-4">
-    <app-question-list></app-question-list>
+    <router-outlet></router-outlet>
 </main>

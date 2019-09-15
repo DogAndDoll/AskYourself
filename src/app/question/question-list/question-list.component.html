@@ -4,6 +4,9 @@
     Ask Question
 </button>
 <div class="questions pt-4">
-    <app-question *ngFor="let question of questions$ | async; trackBy: question?.id" [question]="question">
-    </app-question>
+    <div *ngFor="let question of questions$ | async; trackBy: trackQuestion" [routerLink]="['/questions/', question.id]"
+        class="question-selector">
+        <app-question [question]="question">
+        </app-question>
+    </div>
 </div>

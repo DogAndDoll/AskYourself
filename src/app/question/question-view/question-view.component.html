@@ -1,0 +1,30 @@
+<div *ngIf="question$ | async as question; else loading">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon aria-hidden="false" class="header-icon" color="primary">live_help</mat-icon>
+            </div>
+            <mat-card-title>
+                {{ question.title }}
+            </mat-card-title>
+            <mat-card-subtitle>
+                Asked at {{ question.date | date:'dd.MM.yyyy HH:mm' }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <ng-container *ngIf="question.imageUrl">
+            <img mat-card-image [src]="question.imageUrl">
+            <mat-divider></mat-divider>
+        </ng-container>
+        <mat-card-content class="mt-3">
+            <p>
+                {{ question.description }}
+            </p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+
+    </mat-card>
+</div>
+<ng-template #loading>
+    <div>Loading ...</div>
+</ng-template>

@@ -1,0 +1,27 @@
+$padding: 24px;
+
+.header-icon {
+    font-size: 40px;
+}
+
+.mat-card-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.mat-card {
+    padding: $padding;
+}
+
+.mat-card-footer {
+    margin: 0 -#{$padding} -#{$padding} -#{$padding};
+}
+
+.mat-card-content {
+    font-size: 16px;
+}
+
+.mat-card-image {
+    width: calc(100% + 2 * #{$padding});
+    margin: 0 -#{$padding};
+}

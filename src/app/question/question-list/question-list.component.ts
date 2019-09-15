@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Question } from '../question';
 import { MatDialog } from '@angular/material/dialog';
 import { NewQuestionDialogComponent } from '../new-question-dialog/new-question-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-question-list',
@@ -16,6 +17,7 @@ export class QuestionListComponent implements OnInit {
 
     constructor(
         public dialog: MatDialog,
+        public router: Router,
         private questionService: QuestionService
     ) { }
 
@@ -23,7 +25,7 @@ export class QuestionListComponent implements OnInit {
         this.questions$ = this.questionService.getQuestions();
     }
 
-    addQuestion(): void {
+    public addQuestion(): void {
         const dialogRef = this.dialog.open(NewQuestionDialogComponent, {
             width: '550px',
             data: {}
@@ -32,9 +34,15 @@ export class QuestionListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(
             (question: Question) => {
                 question.date = new Date();
+                question.downVotes = 0;
+                question.upVotes = 0;
                 this.questionService.addQuestion(question);
             }
         );
+    }
+
+    public trackQuestion(index: number, question: Question): number {
+        return question.id;
     }
 
 }

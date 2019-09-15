@@ -1,0 +1,8 @@
+.question-selector {
+    cursor: pointer;
+    transition: 200ms;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}

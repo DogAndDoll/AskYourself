@@ -13,19 +13,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
+import { QuestionViewComponent } from './question-view/question-view.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
     declarations: [
         QuestionListComponent,
         QuestionComponent,
-        NewQuestionDialogComponent
+        NewQuestionDialogComponent,
+        QuestionViewComponent
     ],
     exports: [
         QuestionListComponent
     ],
     imports: [
         CommonModule,
+        RouterModule,
         MatButtonModule,
         MatIconModule,
         MatDialogModule,
