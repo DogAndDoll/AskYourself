@@ -26,7 +26,7 @@ export class AnswerListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.answers$ = this.answerService.getAnswers(this.question.id);
+        this.answers$ = this.answerService.index(this.question.id);
     }
 
     public trackAnswer(index: number, answer: Answer): number {
@@ -46,10 +46,10 @@ export class AnswerListComponent implements OnInit {
                     answer.downVotes = 0;
                     answer.upVotes = 0;
                     answer.questionId = this.question.id;
-                    this.answerService.addAnswer(answer);
-                    this.answers$ = this.answerService.getAnswers(this.question.id);
+                    this.answerService.add(answer);
+                    this.answers$ = this.answerService.index(this.question.id);
                     this.question.answers++;
-                    this.questionService.updateQuestion(this.question);
+                    this.questionService.update(this.question);
                 }
             }
         );

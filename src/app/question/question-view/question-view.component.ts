@@ -24,7 +24,7 @@ export class QuestionViewComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSubscription = this.route.paramMap.subscribe(params => {
             this.questionId = parseInt(params.get('id'), 10);
-            this.questionService.getQuestion(this.questionId).pipe(
+            this.questionService.get(this.questionId).pipe(
                first()
             ).subscribe(
                question => this.question = question
@@ -42,12 +42,12 @@ export class QuestionViewComponent implements OnInit, OnDestroy {
 
     public upVote(): void {
         this.question.upVotes++;
-        this.questionService.updateQuestion(this.question);
+        this.questionService.update(this.question);
     }
 
     public downVote(): void {
         this.question.downVotes++;
-        this.questionService.updateQuestion(this.question);
+        this.questionService.update(this.question);
     }
 
 }

@@ -18,23 +18,23 @@ export class QuestionService {
     ) {
     }
 
-    public getQuestions(): BehaviorSubject<Question[]> {
+    public index(): BehaviorSubject<Question[]> {
         this.pushCurrentQuestions();
         return this.questionsSubject;
     }
 
-    public getQuestion(id: number): Observable<Question> {
+    public get(id: number): Observable<Question> {
         return this.storage.openDb().pipe(
             concatMap((db: NgxIndexedDB) => from(db.getByKey(StorageName.question, id))),
         );
     }
 
-    public addQuestion(question: Question): void {
+    public add(question: Question): void {
         this.storage.getDB().add(StorageName.question, question);
         this.pushCurrentQuestions();
     }
 
-    public updateQuestion(question: Question): void {
+    public update(question: Question): void {
         this.storage.getDB().update(StorageName.question, question);
     }
 

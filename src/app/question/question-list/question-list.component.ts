@@ -22,7 +22,7 @@ export class QuestionListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.questions$ = this.questionService.getQuestions();
+        this.questions$ = this.questionService.index();
     }
 
     public addQuestion(): void {
@@ -37,7 +37,8 @@ export class QuestionListComponent implements OnInit {
                     question.date = new Date();
                     question.downVotes = 0;
                     question.upVotes = 0;
-                    this.questionService.addQuestion(question);
+                    question.answers = 0;
+                    this.questionService.add(question);
                 }
             }
         );

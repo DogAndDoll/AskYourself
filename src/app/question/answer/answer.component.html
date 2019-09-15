@@ -1,12 +1,13 @@
 <mat-card class="mb-4">
     <mat-card-header>
         <div mat-card-avatar>
-            <mat-icon aria-hidden="false" class="header-icon" color="primary">live_help</mat-icon>
+            <mat-icon aria-hidden="false" class="header-icon" color="primary">sms_failed</mat-icon>
         </div>
         <mat-card-subtitle>
-            Asked at {{ answer.date | date:'dd.MM.yyyy HH:mm' }}
+            Answered at {{ answer.date | date:'dd.MM.yyyy HH:mm' }}
         </mat-card-subtitle>
     </mat-card-header>
+    <mat-divider></mat-divider>
     <mat-card-content class="mt-3">
         <p>
             {{ answer.description }}
@@ -14,7 +15,7 @@
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-footer class="mt-2">
-        <mat-grid-list cols="3" rowHeight="60px">
+        <mat-grid-list cols="3" rowHeight="50px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <button mat-icon-button color="accent">
                     <mat-icon aria-hidden="false" (click)="downVote()">thumb_down</mat-icon>

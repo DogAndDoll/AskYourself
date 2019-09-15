@@ -16,7 +16,7 @@ export class AnswerService {
     ) {
     }
 
-    public getAnswers(questionId: number): Observable<Answer[]> {
+    public index(questionId: number): Observable<Answer[]> {
         return this.storage.openDb().pipe(
             concatMap((db: NgxIndexedDB) => db.getAll(
                 StorageName.answer,
@@ -27,11 +27,11 @@ export class AnswerService {
         );
     }
 
-    public addAnswer(answer: Answer): void {
+    public add(answer: Answer): void {
         this.storage.getDB().add(StorageName.answer, answer);
     }
 
-    public updateAnswer(answer: Answer): void {
+    public update(answer: Answer): void {
         this.storage.getDB().update(StorageName.answer, answer);
     }
 
