@@ -6,4 +6,5 @@ export interface Question {
     imageUrl: string;
     upVotes: number;
     downVotes: number;
+    answers: number;
 }

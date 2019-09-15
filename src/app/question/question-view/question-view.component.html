@@ -1,5 +1,5 @@
 <div *ngIf="question; else loading">
-    <mat-card>
+    <mat-card class="mb-4">
         <mat-card-header>
             <div mat-card-avatar>
                 <mat-icon aria-hidden="false" class="header-icon" color="primary">live_help</mat-icon>
@@ -41,6 +41,8 @@
             </mat-grid-list>
         </mat-card-footer>
     </mat-card>
+
+    <app-answer-list [question]="question"></app-answer-list>
 </div>
 <ng-template #loading>
     <div>Loading ...</div>

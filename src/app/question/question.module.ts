@@ -15,6 +15,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
 import { QuestionViewComponent } from './question-view/question-view.component';
 import { RouterModule } from '@angular/router';
+import { AnswerListComponent } from './answer-list/answer-list.component';
+import { NewAnswerDialogComponent } from './new-answer-dialog/new-answer-dialog.component';
+import { AnswerComponent } from './answer/answer.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { RouterModule } from '@angular/router';
         QuestionListComponent,
         QuestionComponent,
         NewQuestionDialogComponent,
-        QuestionViewComponent
+        QuestionViewComponent,
+        AnswerListComponent,
+        NewAnswerDialogComponent,
+        AnswerComponent
     ],
     exports: [
         QuestionListComponent
@@ -42,7 +48,8 @@ import { RouterModule } from '@angular/router';
         MatDividerModule
     ],
     entryComponents: [
-        NewQuestionDialogComponent
+        NewQuestionDialogComponent,
+        NewAnswerDialogComponent
     ]
 })
 export class QuestionModule { }

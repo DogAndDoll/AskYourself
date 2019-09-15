@@ -33,10 +33,12 @@ export class QuestionListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(
             (question: Question) => {
-                question.date = new Date();
-                question.downVotes = 0;
-                question.upVotes = 0;
-                this.questionService.addQuestion(question);
+                if (question) {
+                    question.date = new Date();
+                    question.downVotes = 0;
+                    question.upVotes = 0;
+                    this.questionService.addQuestion(question);
+                }
             }
         );
     }

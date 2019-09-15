@@ -1,0 +1,9 @@
+<button mat-raised-button color="accent" (click)="addAnswer()" class="w-100">
+    <mat-icon aria-hidden="false">add</mat-icon>
+    &nbsp;
+    Answer
+</button>
+<div class="answers pt-4">
+    <div *ngFor="let answer of answers$ | async; trackBy: trackAnswer" class="question-selector">
+    </div>
+</div>
